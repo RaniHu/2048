@@ -1,6 +1,6 @@
 var grid = new Array();               //声明一个一维数组
 var score = 0;
-var isAdd=new Array();                //数字是否已经叠加过
+var isAdd = new Array();                //数字是否已经叠加过
 
 
 $(function () {
@@ -34,15 +34,15 @@ function init() {
     //将一维数组变成二维数组
     for (var i = 0; i < 4; i++) {
         grid[i] = new Array();
-        isAdd[i]=new Array();
+        isAdd[i] = new Array();
         for (var j = 0; j < 4; j++) {
             grid[i][j] = 0;
-            isAdd[i][j]=false;
+            isAdd[i][j] = false;
         }
     }
 
     updateGridView();
-    score=0;
+    score = 0;
 
 }
 
@@ -76,7 +76,7 @@ function updateGridView() {
                 });
                 numberCell.text(grid[i][j]);
             }
-            isAdd[i][j]=false;
+            isAdd[i][j] = false;
         }
     }
 
@@ -85,7 +85,7 @@ function updateGridView() {
 
 //随机生成一个新的数字
 function generateOneNumber() {
-    var times=0;
+    var times = 0;
     if (noSpace(grid)) {
         return false;           //此时棋盘格已经没有空间
     }
@@ -95,7 +95,7 @@ function generateOneNumber() {
         var randomPosX = Math.floor(Math.random() * 4);             //生成0-1之间的随机数*4 生成0-4之间的浮点随机数 再向下取整
         var randomPosY = Math.floor(Math.random() * 4);             //生成0-1之间的随机数*4 生成0-4之间的浮点随机数 再向下取整
 
-        while (times<50) {
+        while (times < 50) {
             if (grid[randomPosX][randomPosY] == 0) {
                 break;                                         //如果生成的随机数对应的位置的是0则停止
 
@@ -105,12 +105,12 @@ function generateOneNumber() {
                 times++;
             }
         }
-        if(times==50){                                          //当随机到第50次时，寻找坐标为0的位置
+        if (times == 50) {                                          //当随机到第50次时，寻找坐标为0的位置
             for (var i = 0; i < 4; i++) {
                 for (var j = 0; j < 4; j++) {
-                    if(grid[i][j]==0) {
-                        randomPosX=i;
-                        randomPosY=j;
+                    if (grid[i][j] == 0) {
+                        randomPosX = i;
+                        randomPosY = j;
                     }
                 }
             }
@@ -134,29 +134,29 @@ $(document).keydown(function (event) {
         case 37 :           //左
             event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveLeft()) {
-                setTimeout(generateOneNumber(),200);
-                setTimeout(isGameOver(),300);
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
             }
             break;
         case 38 :           //上
             event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveUp()) {
-                setTimeout(generateOneNumber(),200);
-                setTimeout(isGameOver(),300);
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
             }
             break;
         case 39 :           //右
             event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveRight()) {
-                setTimeout(generateOneNumber(),200);
-                setTimeout(isGameOver(),300);
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
             }
             break;
         case 40 :           //下
             event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveDown()) {
-                setTimeout(generateOneNumber(),200);
-                setTimeout(isGameOver(),300);
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
             }
             break;
         default :
@@ -166,20 +166,64 @@ $(document).keydown(function (event) {
 });
 
 //手指触摸屏幕
-document.addEventListener('touchstart',function(event) {
-    startX=event.touches[0].pageX;
-    startY=event.touches[0].pageY;
+document.addEventListener('touchstart', function (event) {
+    startX = event.touches[0].pageX;
+    startY = event.touches[0].pageY;
 });
 //手指离开屏幕
-document.addEventListener('touchend',function(event) {
-    endX=event.changedTouches[0].pageX;
-    endY=event.changedTouches[0].pageY;
+document.addEventListener('touchend', function (event) {
+    endX = event.changedTouches[0].pageX;
+    endY = event.changedTouches[0].pageY;
+
+    var disX = endX - startX;
+    var disY = endY - startY;
+
+    if(Math.abs(disX)==0||Math.abs(disY)==0){
+        return;
+    }
+
+    //x横向滑动
+    if (Math.abs(disX) >= Math.abs(disY)) {
+        //向左滑动
+        if (disX > 0) {
+            if (moveLeft()) {
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
+            }
+        }
+        //向右滑动
+        else {
+            if (moveRight()) {
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
+            }
+        }
+    }
+
+    //y纵向滑动
+    else {
+        //向下滑动
+        if (disX > 0) {
+            if (moveDown()) {
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
+            }
+        }
+        //向上滑动
+        else {
+            if (moveUp()) {
+                setTimeout(generateOneNumber(), 200);
+                setTimeout(isGameOver(), 300);
+            }
+        }
+    }
+
 });
 
 
 //游戏结束
 function isGameOver() {
-    if(noSpace(grid)&&noMove(grid)) {                       //当没有空格并且没有相同数字可以合并时
+    if (noSpace(grid) && noMove(grid)) {                       //当没有空格并且没有相同数字可以合并时
         gameOver();
     }
 }
@@ -207,7 +251,7 @@ function moveLeft() {
                             grid[i][j] = 0;
                             continue;
                         }
-                        else if (grid[i][k] == grid[i][j] && noBarrierX(i, k, j, grid)&& !isAdd[i][k]) {
+                        else if (grid[i][k] == grid[i][j] && noBarrierX(i, k, j, grid) && !isAdd[i][k]) {
                             //move
                             moveAnimate(i, j, i, k);                            //左侧与左侧数字相等、无障碍物且没有叠加过
                             //add
@@ -215,10 +259,10 @@ function moveLeft() {
                             grid[i][j] = 0;
 
                             //add score
-                            score+=grid[i][k];                                  //更新页面分数
+                            score += grid[i][k];                                  //更新页面分数
                             updateScore(score);
 
-                            isAdd[i][k]=true;
+                            isAdd[i][k] = true;
 
                             continue;
                         }
@@ -251,14 +295,14 @@ function moveRight() {
                             grid[i][j] = 0;
                             continue;
                         }
-                        else if (grid[i][k] == grid[i][j] && noBarrierX(i, j, k, grid)&& !isAdd[i][k]) {
+                        else if (grid[i][k] == grid[i][j] && noBarrierX(i, j, k, grid) && !isAdd[i][k]) {
                             moveAnimate(i, j, i, k);
                             grid[i][k] *= 2;
                             grid[i][j] = 0;
-                            score+=grid[i][k];
+                            score += grid[i][k];
                             updateScore(score);
 
-                            isAdd[i][k]=true;
+                            isAdd[i][k] = true;
 
                             continue;
                         }
@@ -281,7 +325,7 @@ function moveUp() {
 
     //moveUp
     else {
-        for (var j = 0; j < 4; j++){
+        for (var j = 0; j < 4; j++) {
             for (var i = 1; i < 4; i++) {
                 if (grid[i][j] != 0) {
                     for (var k = 0; k < i; k++) {
@@ -292,21 +336,21 @@ function moveUp() {
                             grid[i][j] = 0;
                             continue;
                         }
-                        else if (grid[k][j] == grid[i][j] && noBarrierY(j, k, i, grid)&& !isAdd[k][j]) {
+                        else if (grid[k][j] == grid[i][j] && noBarrierY(j, k, i, grid) && !isAdd[k][j]) {
                             moveAnimate(i, j, k, j);
                             grid[k][j] *= 2;
                             grid[i][j] = 0;
-                            score+=grid[k][j];
+                            score += grid[k][j];
                             updateScore(score);
 
-                            isAdd[i][k]=true;
+                            isAdd[i][k] = true;
 
                             continue;
                         }
                     }
                 }
             }
-    }
+        }
         setTimeout("updateGridView()", 200);
         return true;
     }
@@ -330,14 +374,14 @@ function moveDown() {
                             grid[i][j] = 0;
                             continue;
                         }
-                        else if (grid[k][j] == grid[i][j] && noBarrierY(j, i, k, grid)&& !isAdd[k][j]) {
+                        else if (grid[k][j] == grid[i][j] && noBarrierY(j, i, k, grid) && !isAdd[k][j]) {
                             moveAnimate(i, j, k, j);
                             grid[k][j] *= 2;
                             grid[i][j] = 0;
-                            score+=grid[k][j];
+                            score += grid[k][j];
                             updateScore(score);
 
-                            isAdd[i][k]=true;
+                            isAdd[i][k] = true;
                             continue;
                         }
                     }

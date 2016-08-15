@@ -2,11 +2,76 @@ var grid = new Array();               //声明一个一维数组
 var score = 0;
 var isAdd = new Array();                //数字是否已经叠加过
 
+var startX = 0;
+var startY = 0;
+var endX = 0;
+var endY = 0;
+
+var gridWidth=$(".grid-cell").width();
 
 $(function () {
     newGame();
 
-});
+    var clientW = $(window).width();
+    var clientH = $(window).height();
+
+    if(clientW < 600){
+        $(".container").css({
+            width: clientW+'px',
+            height: clientH+'px',
+            margin:'0 auto'
+        });
+    }
+/*
+    if (clientW < 800){
+        $(".container").css({
+            width: clientW+'px',
+            height: clientH+'px',
+            margin:'0 auto'
+        });
+        $(".container .box").css({
+            width: '90%',
+            height: '93%',
+            padding: '3.5% 5%'
+        });
+        $(".container .box header").css({
+            width: '100%',
+            height: '17%'
+        });
+        $(".container .box header h1").css({
+            width: '19%',
+            height: '90%',
+
+        })
+        $(".container .box .main").css({
+            width: '100%',
+            height: '78%',
+            margin: '6% auto'
+
+        }) ;
+        $(".container .box .main ul#grid-box").css({
+            width: '97%',
+            height: '97%',
+            padding: '1.5%'
+        })
+        $(".container .box .main ul#grid-box li.grid-cell").css({
+            width: '22%',
+            height: '22%'
+        })
+        $(".container .box .main ul#grid-box .number-cell").css({
+            width: '22%',
+            height: '22%',
+            lineHeight: '22%'
+        })
+
+    }
+
+*/
+
+
+
+        })
+
 
 function newGame() {
     //初始化期盼格子
@@ -60,15 +125,15 @@ function updateGridView() {
                 numberCell.css({
                     width: '0px',
                     height: '0px',
-                    top: getPosTop(i, j) + 35,
-                    left: getPosLeft(i, j) + 35
+                    top: getPosTop(i, j) +gridWidth/2 ,
+                    left: getPosLeft(i, j) + gridWidth/2
                 })
             }
             //此时number-cell完全覆盖grid-cell
             else {
                 numberCell.css({
-                    width: '70px',
-                    height: '70px',
+                    width: gridWidth/2,
+                    height: gridWidth/2,
                     top: getPosTop(i, j),
                     left: getPosLeft(i, j),
                     backgroundColor: getNumberBgColor(grid[i][j]),
@@ -178,22 +243,22 @@ document.addEventListener('touchend', function (event) {
     var disX = endX - startX;
     var disY = endY - startY;
 
-    if(Math.abs(disX)==0||Math.abs(disY)==0){
+    if (Math.abs(disX) == 0 || Math.abs(disY) == 0) {
         return;
     }
 
     //x横向滑动
     if (Math.abs(disX) >= Math.abs(disY)) {
-        //向左滑动
+        //向右滑动
         if (disX > 0) {
-            if (moveLeft()) {
+            if (moveRight()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
         }
-        //向右滑动
+        //向左滑动
         else {
-            if (moveRight()) {
+            if (moveLeft()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }

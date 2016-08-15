@@ -2,13 +2,14 @@
  * Created by Administrator on 2016/8/10 0010.
  */
 
+var gridSize=$(".grid-cell").width();
 //获取小方格距离顶部距离
 function getPosTop(i, j) {
-    return 10 * (i + 1) + i * 70;
+    return (0.18*gridSize) * (i + 1) + i * gridSize;
 }
 //获取小方格距离左边的距离
 function getPosLeft(i, j) {
-    return 10 * (j + 1) + j * 70;
+    return  (0.18*gridSize) * (j + 1) + j * gridSize;
 }
 
 //获取不同数字的背景色
@@ -89,8 +90,8 @@ function showNumAnimate(i, j, randomNum) {
 
     //数字的动画
     numberCell.animate({
-        width: '70px',
-        height: '70px',
+        width:gridSize/2,
+        height: gridSize/2,
         top: getPosTop(i, j),
         left: getPosLeft(i, j)
     }, 100);

@@ -85,7 +85,7 @@ function updateGridView() {
 
 //随机生成一个新的数字
 function generateOneNumber() {
-
+    var times=0;
     if (noSpace(grid)) {
         return false;           //此时棋盘格已经没有空间
     }
@@ -94,13 +94,25 @@ function generateOneNumber() {
         //随机一个位置
         var randomPosX = Math.floor(Math.random() * 4);             //生成0-1之间的随机数*4 生成0-4之间的浮点随机数 再向下取整
         var randomPosY = Math.floor(Math.random() * 4);             //生成0-1之间的随机数*4 生成0-4之间的浮点随机数 再向下取整
-        while (true) {
+
+        while (times<50) {
             if (grid[randomPosX][randomPosY] == 0) {
-                break;
-                //如果生成的随机数对应的位置的数字是0则停止
+                break;                                         //如果生成的随机数对应的位置的是0则停止
+
             } else {                                           //否则重新生成坐标
                 randomPosX = Math.floor(Math.random() * 4);
                 randomPosY = Math.floor(Math.random() * 4);
+                times++;
+            }
+        }
+        if(times==50){                                          //当随机到第50次时，寻找坐标为0的位置
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if(grid[i][j]==0) {
+                        randomPosX=i;
+                        randomPosY=j;
+                    }
+                }
             }
         }
 
@@ -120,24 +132,28 @@ function generateOneNumber() {
 $(document).keydown(function (event) {
     switch (event.keyCode) {
         case 37 :           //左
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveLeft()) {
                 setTimeout(generateOneNumber(),200);
                 setTimeout(isGameOver(),300);
             }
             break;
         case 38 :           //上
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveUp()) {
                 setTimeout(generateOneNumber(),200);
                 setTimeout(isGameOver(),300);
             }
             break;
         case 39 :           //右
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveRight()) {
                 setTimeout(generateOneNumber(),200);
                 setTimeout(isGameOver(),300);
             }
             break;
         case 40 :           //下
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveDown()) {
                 setTimeout(generateOneNumber(),200);
                 setTimeout(isGameOver(),300);
@@ -149,9 +165,21 @@ $(document).keydown(function (event) {
     }
 });
 
+//手指触摸屏幕
+document.addEventListener('touchstart',function(event) {
+    startX=event.touches[0].pageX;
+    startY=event.touches[0].pageY;
+});
+//手指离开屏幕
+document.addEventListener('touchend',function(event) {
+    endX=event.changedTouches[0].pageX;
+    endY=event.changedTouches[0].pageY;
+});
+
+
 //游戏结束
 function isGameOver() {
-    if(noSpace(grid)&&noMove(grid)) {
+    if(noSpace(grid)&&noMove(grid)) {                       //当没有空格并且没有相同数字可以合并时
         gameOver();
     }
 }
@@ -171,23 +199,23 @@ function moveLeft() {
             for (var j = 1; j < 4; j++) {
                 if (grid[i][j] != 0) {
 
-                    for (var k = 0; k < j; k++) {
-                        if (grid[i][k] == 0 && noBarrierX(i, k, j, grid)) {
+                    for (var k = 0; k < j; k++) {                               //k为左侧数字的坐标
+                        if (grid[i][k] == 0 && noBarrierX(i, k, j, grid)) {     //左侧没有数字且与要移动数字间没有障碍物
                             //move
                             moveAnimate(i, j, i, k);
-                            grid[i][k] = grid[i][j];
+                            grid[i][k] = grid[i][j];                            //左侧数字直接移动到左侧某位置
                             grid[i][j] = 0;
                             continue;
                         }
                         else if (grid[i][k] == grid[i][j] && noBarrierX(i, k, j, grid)&& !isAdd[i][k]) {
                             //move
-                            moveAnimate(i, j, i, k);
+                            moveAnimate(i, j, i, k);                            //左侧与左侧数字相等、无障碍物且没有叠加过
                             //add
-                            grid[i][k] += grid[i][j];
+                            grid[i][k] += grid[i][j];                           //左侧数字=右侧+本身
                             grid[i][j] = 0;
 
                             //add score
-                            score+=grid[i][k];
+                            score+=grid[i][k];                                  //更新页面分数
                             updateScore(score);
 
                             isAdd[i][k]=true;

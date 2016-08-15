@@ -188,6 +188,8 @@ function noBarrierY(col, row1, row2, grid) {
     return true;
 }
 
+
+//判断是否可以移动
 function noMove(grid){
     if(canMoveLeft(grid)||canMoveRight(grid)||canMoveUp(grid)||canMoveDown(grid)) {
         return false;
@@ -195,6 +197,7 @@ function noMove(grid){
     return true;
 }
 
+//更新得分
 function updateScore(score) {
     $(".user-score").text(score);
 }

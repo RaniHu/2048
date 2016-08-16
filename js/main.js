@@ -2,76 +2,38 @@ var grid = new Array();               //声明一个一维数组
 var score = 0;
 var isAdd = new Array();                //数字是否已经叠加过
 
-var startX = 0;
-var startY = 0;
-var endX = 0;
-var endY = 0;
 
-var gridWidth=$(".grid-cell").width();
 
 $(function () {
     newGame();
 
-    var clientW = $(window).width();
-    var clientH = $(window).height();
+    var screenW=$(window).width();
+    var screenH=$(window).height();
 
-    if(clientW < 600){
+    if(screenW<600){
         $(".container").css({
-            width: clientW+'px',
-            height: clientH+'px',
-            margin:'0 auto'
+            width:screenW,
+            height:screenH
         });
+
+        $(".container .box .main ul#grid-box").css("height",gridBox);
+
+
     }
-/*
-    if (clientW < 800){
+    else {
         $(".container").css({
-            width: clientW+'px',
-            height: clientH+'px',
-            margin:'0 auto'
+            width: '370px',
+            height: '460px',
+            margin: '80px auto'
         });
-        $(".container .box").css({
-            width: '90%',
-            height: '93%',
-            padding: '3.5% 5%'
-        });
-        $(".container .box header").css({
-            width: '100%',
-            height: '17%'
-        });
-        $(".container .box header h1").css({
-            width: '19%',
-            height: '90%',
 
-        })
-        $(".container .box .main").css({
-            width: '100%',
-            height: '78%',
-            margin: '6% auto'
-
-        }) ;
-        $(".container .box .main ul#grid-box").css({
-            width: '97%',
-            height: '97%',
-            padding: '1.5%'
-        })
-        $(".container .box .main ul#grid-box li.grid-cell").css({
-            width: '22%',
-            height: '22%'
-        })
-        $(".container .box .main ul#grid-box .number-cell").css({
-            width: '22%',
-            height: '22%',
-            lineHeight: '22%'
-        })
+        gridBox=320;
+        gridCell=70;
+        gridGap=10;
 
     }
 
-*/
-
-
-
-        })
-
+});
 
 function newGame() {
     //初始化期盼格子
@@ -125,15 +87,15 @@ function updateGridView() {
                 numberCell.css({
                     width: '0px',
                     height: '0px',
-                    top: getPosTop(i, j) +gridWidth/2 ,
-                    left: getPosLeft(i, j) + gridWidth/2
+                    top: getPosTop(i, j) + gridCell/2,
+                    left: getPosLeft(i, j) + gridCell/2
                 })
             }
             //此时number-cell完全覆盖grid-cell
             else {
                 numberCell.css({
-                    width: gridWidth/2,
-                    height: gridWidth/2,
+                    width: gridCell,
+                    height: gridCell,
                     top: getPosTop(i, j),
                     left: getPosLeft(i, j),
                     backgroundColor: getNumberBgColor(grid[i][j]),
@@ -243,22 +205,22 @@ document.addEventListener('touchend', function (event) {
     var disX = endX - startX;
     var disY = endY - startY;
 
-    if (Math.abs(disX) == 0 || Math.abs(disY) == 0) {
+    if(Math.abs(disX)||Math.abs(disY)==0){
         return;
     }
 
     //x横向滑动
     if (Math.abs(disX) >= Math.abs(disY)) {
-        //向右滑动
+        //向左滑动
         if (disX > 0) {
-            if (moveRight()) {
+            if (moveLeft()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
         }
-        //向左滑动
+        //向右滑动
         else {
-            if (moveLeft()) {
+            if (moveRight()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }

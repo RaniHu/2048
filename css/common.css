@@ -32,16 +32,4 @@ a{
     clear: both;
 }
 
-/*蓝色按钮*/
-.myBtn{
-    display: block;
-    background-color:#256FB9;
-    text-align: center;
-    border:1px solid #256FB9;
-    color: #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'microsoft Yahei';
-
-}
 

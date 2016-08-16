@@ -1,15 +1,18 @@
 /**
  * Created by Administrator on 2016/8/10 0010.
  */
-
-var gridSize=$(".grid-cell").width();
+var screenW=$(window).width();
+var screenH=$(window).height();
+var gridBox=screenW*0.92*0.92;
+var gridCell=gridBox*0.23;
+var gridGap=gridBox*0.03;
 //获取小方格距离顶部距离
 function getPosTop(i, j) {
-    return (0.18*gridSize) * (i + 1) + i * gridSize;
+    return gridGap  * (i + 1) + i * gridCell;
 }
 //获取小方格距离左边的距离
 function getPosLeft(i, j) {
-    return  (0.18*gridSize) * (j + 1) + j * gridSize;
+    return gridGap * (j + 1) + j * gridCell;
 }
 
 //获取不同数字的背景色
@@ -90,8 +93,8 @@ function showNumAnimate(i, j, randomNum) {
 
     //数字的动画
     numberCell.animate({
-        width:gridSize/2,
-        height: gridSize/2,
+        width: gridCell,
+        height: gridCell,
         top: getPosTop(i, j),
         left: getPosLeft(i, j)
     }, 100);

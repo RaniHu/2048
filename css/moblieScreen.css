@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.container {
+  margin: 0 auto;
+  background-color: #fbf8ef;
+  font-family: 'Microsoft Yahei';
+  overflow: hidden; }
+  .container .box {
+    width: 92%;
+    height: 92%;
+    padding: 4%;
+    text-align: center;
+    color: white;
+    /*游戏部分*/ }
+    .container .box header {
+      width: 100%;
+      height: 17%;
+      /*logo*/
+      /*分数和开始游戏*/
+      /*开始游戏按钮*/
+      /*分数*/ }
+      .container .box header h1 {
+        float: left;
+        width: 25%;
+        height: 100%;
+        font-size: 24px;
+        line-height: 70px;
+        border-radius: 5px;
+        background-color: #ebc400; }
+      .container .box header p, .container .box header a {
+        float: right;
+        width: 28%;
+        height: 75%;
+        border-radius: 5px;
+        background-color: #8f7a66; }
+      .container .box header a.new-game {
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        margin: 8px auto;
+        padding: 0 3px; }
+        .container .box header a.new-game:hover {
+          background-color: #9f8b77; }
+      .container .box header p.score {
+        display: block;
+        padding-top: 6px;
+        font-size: 6px;
+        color: #ebddd0;
+        margin: 6px 10px;
+        /*玩家分数*/ }
+        .container .box header p.score .user-score {
+          display: block;
+          font-size: 24px;
+          letter-spacing: 2px;
+          color: white; }
+    .container .box .main {
+      width: 100%;
+      height: 70%;
+      background-color: #baaa99;
+      margin: 20px auto;
+      border-radius: 5px; }
+      .container .box .main ul#grid-box {
+        position: relative;
+        width: 92%;
+        padding: 4%; }
+        .container .box .main ul#grid-box li.grid-cell {
+          position: absolute;
+          width: 22%;
+          height: 22%;
+          background-color: #ccc0b3;
+          border-radius: 5px; }
+        .container .box .main ul#grid-box .number-cell {
+          position: absolute;
+          line-height: 70px;
+          border-radius: 5px;
+          font-size: 34px;
+          font-weight: bold;
+          letter-spacing: 2px; }
+
+/*# sourceMappingURL=moblieScreen.css.map */

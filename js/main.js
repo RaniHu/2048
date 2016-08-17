@@ -2,10 +2,13 @@ var grid = new Array();               //声明一个一维数组
 var score = 0;
 var isAdd = new Array();                //数字是否已经叠加过
 
-
+var startX = 0;
+var startY = 0;
+var endX = 0;
+var endY = 0;
 
 $(function () {
-    forMoblie()
+    forMoblie();
     newGame();
 });
 
@@ -177,28 +180,28 @@ function generateOneNumber() {
 $(document).keydown(function (event) {
     switch (event.keyCode) {
         case 37 :           //左
-            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveLeft()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
             break;
         case 38 :           //上
-            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveUp()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
             break;
         case 39 :           //右
-            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveRight()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
             break;
         case 40 :           //下
-            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveDown()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
@@ -223,22 +226,22 @@ document.addEventListener('touchend', function (event) {
     var disX = endX - startX;
     var disY = endY - startY;
 
-    if(Math.abs(disX)||Math.abs(disY)==0){
+    if( Math.abs( disX ) < 0.3*gridCell && Math.abs( disY) < 0.3*gridCell){
         return;
     }
 
     //x横向滑动
     if (Math.abs(disX) >= Math.abs(disY)) {
-        //向左滑动
+        //向右滑动
         if (disX > 0) {
-            if (moveLeft()) {
+            if (moveRight()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
         }
-        //向右滑动
+        //向左滑动
         else {
-            if (moveRight()) {
+            if (moveLeft()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
@@ -248,7 +251,7 @@ document.addEventListener('touchend', function (event) {
     //y纵向滑动
     else {
         //向下滑动
-        if (disX > 0) {
+        if (disY > 0) {
             if (moveDown()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);

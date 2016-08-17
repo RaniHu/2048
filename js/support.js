@@ -99,7 +99,7 @@ function showNumAnimate(i, j, randomNum) {
         height: gridCell,
         top: getPosTop(i, j),
         left: getPosLeft(i, j)
-    }, 100);
+    }, 50);
 }
 
 

@@ -6,38 +6,47 @@ var isAdd = new Array();                //数字是否已经叠加过
 
 $(function () {
     newGame();
+});
 
-    var screenW=$(window).width();
-    var screenH=$(window).height();
+function newGame() {
 
-    if(screenW<600){
-        $(".container").css({
-            width:screenW,
-            height:screenH
-        });
-
-        $(".container .box .main ul#grid-box").css("height",gridBox);
+    if(screenW>600){
+        gridBox=320;
+        gridCell=70;
+        spaceCell=10;
 
 
     }
     else {
+
         $(".container").css({
-            width: '370px',
-            height: '460px',
-            margin: '80px auto'
+            width:screenW,
+            height:screenH,
+            margin:'0 auto'
+
         });
 
-        gridBox=320;
-        gridCell=70;
-        gridGap=10;
+        $(".container .box  ul#grid-box").css({
+            width:gridBox,
+            height:gridBox
+
+        });
+        $(".container .box ul#grid-box .grid-cell,.number-cell").css({
+            width:gridCell,
+            height:gridCell,
+            'line-height':gridCell+'px',
+            'font-size':fontSize+'px'
+        });
+
+        $(".box h2").css("font-size",h2Font);
 
     }
 
-});
 
-function newGame() {
     //初始化期盼格子
     init();
+
+
 
     //随机两个格子中生成数字
     generateOneNumber();
@@ -88,7 +97,7 @@ function updateGridView() {
                     width: '0px',
                     height: '0px',
                     top: getPosTop(i, j) + gridCell/2,
-                    left: getPosLeft(i, j) + gridCell/2
+                    left: getPosLeft(i, j) +gridCell/2
                 })
             }
             //此时number-cell完全覆盖grid-cell
@@ -106,6 +115,13 @@ function updateGridView() {
             isAdd[i][j] = false;
         }
     }
+
+    $(".container .box ul#grid-box .grid-cell,.number-cell").css({
+        'line-height':gridCell+'px',
+    });
+
+
+
 
 }
 

@@ -5,14 +5,14 @@
 
 .container {
   width: 370px;
-  height: 460px;
+  height: 520px;
   margin: 80px auto;
   background-color: #fbf8ef;
   font-family: 'Microsoft Yahei'; }
   .container .box {
-    width: 330px;
+    width: 90%;
     height: 430px;
-    padding: 15px 20px;
+    padding: 5%;
     text-align: center;
     color: white;
     /*logo*/
@@ -20,12 +20,17 @@
     /*开始游戏按钮*/
     /*分数*/
     /*游戏部分*/ }
+    .container .box h2 {
+      color: #5B4735;
+      margin: 6% auto; }
+    .container .box header {
+      width: 100%; }
     .container .box h1 {
       float: left;
-      width: 70px;
-      height: 70px;
+      width: 75px;
+      height: 75px;
       font-size: 24px;
-      line-height: 70px;
+      line-height: 75px;
       border-radius: 5px;
       background-color: #ebc400; }
     .container .box p, .container .box a {
@@ -55,107 +60,127 @@
         font-size: 24px;
         letter-spacing: 2px;
         color: white; }
-    .container .box .main {
+    .container .box ul#grid-box {
+      position: relative;
       width: 330px;
       height: 330px;
-      background-color: #baaa99;
-      margin: 20px auto;
-      border-radius: 5px; }
-      .container .box .main ul#grid-box {
-        position: relative;
-        width: 320px;
-        height: 320px;
-        padding: 5px; }
-        .container .box .main ul#grid-box li.grid-cell {
-          position: absolute;
-          width: 70px;
-          height: 70px;
-          background-color: #ccc0b3;
-          border-radius: 5px; }
-        .container .box .main ul#grid-box .number-cell {
-          position: absolute;
-          line-height: 70px;
-          border-radius: 5px;
-          font-size: 34px;
-          font-weight: bold;
-          letter-spacing: 2px; }
+      border-radius: 5px;
+      background-color: #baaa99; }
+      .container .box ul#grid-box li.grid-cell {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background-color: #ccc0b3;
+        border-radius: 5px; }
+      .container .box ul#grid-box .number-cell {
+        position: absolute;
+        line-height: 70px;
+        border-radius: 5px;
+        font-size: 34px;
+        font-weight: bold;
+        letter-spacing: 2px; }
 
-@media (max-width: 600px) {
-  .container {
+/*
+
+@media (max-width :600px) {
+  .container{
     margin: 0 auto;
-    background-color: #fbf8ef;
-    font-family: 'Microsoft Yahei';
-    overflow: hidden; }
-    .container .box {
+
+    .box{
       width: 92%;
       height: 92%;
       padding: 4%;
       text-align: center;
       color: white;
-      /*游戏部分*/ }
-      .container .box header {
+
+
+      header{
         width: 100%;
         height: 17%;
-        /*logo*/
-        /*分数和开始游戏*/
-        /*开始游戏按钮*/
-        /*分数*/ }
-        .container .box header h1 {
+
+        /!*logo*!/
+        h1{
           float: left;
           width: 25%;
           height: 100%;
           font-size: 24px;
           line-height: 70px;
           border-radius: 5px;
-          background-color: #ebc400; }
-        .container .box header p, .container .box header a {
+          background-color: #ebc400;
+        }
+        /!*分数和开始游戏*!/
+        p ,a{
           float: right;
           width: 28%;
           height: 75%;
           border-radius: 5px;
-          background-color: #8f7a66; }
-        .container .box header a.new-game {
+          background-color:#8f7a66;
+
+        }
+        /!*开始游戏按钮*!/
+        a.new-game{
           color: white;
           font-size: 13px;
           font-weight: bold;
           margin: 8px auto;
-          padding: 0 3px; }
-          .container .box header a.new-game:hover {
-            background-color: #9f8b77; }
-        .container .box header p.score {
+          padding: 0 3px;
+          &:hover{
+            background-color: #9f8b77;
+          }
+        }
+
+        /!*分数*!/
+        p.score {
           display: block;
           padding-top: 6px;
           font-size: 6px;
           color: #ebddd0;
           margin: 6px 10px;
-          /*玩家分数*/ }
-          .container .box header p.score .user-score {
+          //background-color: #947869;
+          /!*玩家分数*!/
+          .user-score{
             display: block;
             font-size: 24px;
             letter-spacing: 2px;
-            color: white; }
-      .container .box .main {
+            color: white;
+          }
+        }
+
+      }
+
+
+      /!*游戏部分*!/
+      .main{
         width: 100%;
         height: 70%;
         background-color: #baaa99;
         margin: 20px auto;
-        border-radius: 5px; }
-        .container .box .main ul#grid-box {
+        border-radius: 5px;
+        ul#grid-box{
           position: relative;
           width: 92%;
-          padding: 4%; }
-          .container .box .main ul#grid-box li.grid-cell {
+          padding: 4%;
+          li.grid-cell{
             position: absolute;
             width: 22%;
             height: 22%;
             background-color: #ccc0b3;
-            border-radius: 5px; }
-          .container .box .main ul#grid-box .number-cell {
+            border-radius: 5px;
+          }
+          .number-cell {
             position: absolute;
             line-height: 70px;
             border-radius: 5px;
             font-size: 34px;
             font-weight: bold;
-            letter-spacing: 2px; } }
+            letter-spacing: 2px;
+          }
+        }
+      }
+    }
+
+  }
+}
+*/
 
 /*# sourceMappingURL=style.css.map */

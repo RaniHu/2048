@@ -3,16 +3,18 @@
  */
 var screenW=$(window).width();
 var screenH=$(window).height();
-var gridBox=screenW*0.92*0.92;
-var gridCell=gridBox*0.23;
-var gridGap=gridBox*0.03;
+var gridBox=screenW*0.9;
+var gridCell=gridBox*0.2125;
+var spaceCell=gridBox*0.03;
+var fontSize=gridCell*0.4;
+var h2Font=gridCell*0.34;
 //获取小方格距离顶部距离
 function getPosTop(i, j) {
-    return gridGap  * (i + 1) + i * gridCell;
+    return spaceCell * (i + 1) + i * gridCell;
 }
 //获取小方格距离左边的距离
 function getPosLeft(i, j) {
-    return gridGap * (j + 1) + j * gridCell;
+    return spaceCell * (j + 1) + j * gridCell;
 }
 
 //获取不同数字的背景色

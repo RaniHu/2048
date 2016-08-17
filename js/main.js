@@ -5,20 +5,19 @@ var isAdd = new Array();                //数字是否已经叠加过
 
 
 $(function () {
+    forMoblie()
     newGame();
 });
 
-function newGame() {
 
+
+function forMoblie(){
     if(screenW>600){
         gridBox=320;
         gridCell=70;
         spaceCell=10;
-
-
     }
     else {
-
         $(".container").css({
             width:screenW,
             height:screenH,
@@ -42,6 +41,9 @@ function newGame() {
 
     }
 
+
+}
+function newGame() {
 
     //初始化期盼格子
     init();
@@ -175,28 +177,28 @@ function generateOneNumber() {
 $(document).keydown(function (event) {
     switch (event.keyCode) {
         case 37 :           //左
-            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveLeft()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
             break;
         case 38 :           //上
-            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveUp()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
             break;
         case 39 :           //右
-            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveRight()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);
             }
             break;
         case 40 :           //下
-            event.preventDefault();                                 //阻止按下键盘是滚动条滚动
+            //event.preventDefault();                                 //阻止按下键盘是滚动条滚动
             if (moveDown()) {
                 setTimeout(generateOneNumber(), 200);
                 setTimeout(isGameOver(), 300);

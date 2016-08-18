@@ -3,10 +3,7 @@ body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,table,td,dl,dt,dd,img,div,input{
     padding: 0;
     margin:  0;
 }
-body{
-    font-size: 14px;
 
-}
 img{
     border: none;
 }

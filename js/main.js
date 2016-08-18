@@ -7,9 +7,14 @@ var startY = 0;
 var endX = 0;
 var endY = 0;
 
+
+
 $(function () {
     forMoblie();
     newGame();
+
+
+
 });
 
 
@@ -51,11 +56,11 @@ function newGame() {
     //初始化期盼格子
     init();
 
-
-
     //随机两个格子中生成数字
     generateOneNumber();
     generateOneNumber();
+
+
 }
 
 
@@ -276,7 +281,12 @@ function isGameOver() {
     }
 }
 function gameOver() {
-    alert("游戏结束")
+    $(".container .game-over-mes").css('opacity','1');
+    $(".container .game-over-mes a.try-again ").click(function(){
+        $(".container .game-over-mes").css('opacity',"0");
+    })
+
+
 }
 
 //向左移动
@@ -311,6 +321,7 @@ function moveLeft() {
                             updateScore(score);
 
                             isAdd[i][k] = true;
+
 
                             continue;
                         }

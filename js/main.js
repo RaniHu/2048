@@ -281,9 +281,16 @@ function isGameOver() {
     }
 }
 function gameOver() {
-    $(".container .game-over-mes").css('opacity','1');
+    $(".container .game-over-mes").css({
+            opacity:"1",
+            display:"block"
+        }
+    );
     $(".container .game-over-mes a.try-again ").click(function(){
-        $(".container .game-over-mes").css('opacity',"0");
+        $(".container .game-over-mes").css({
+            opacity:"0",
+            display:"none"
+        });
     })
 
 

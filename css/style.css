@@ -1,16 +1,19 @@
 @charset "UTF-8";
 .wrapper {
-  width: 100%;
-  height: 100%; }
+    width: 100%;
+    height: 100%;
+}
 
 .container {
-  position: relative;
-  width: 370px;
-  height: 520px;
-  margin: 80px auto;
-  background-color: #faf8ef;
-  font-family: 'Microsoft Yahei', "Helvetica Neue", Arial, sans-serif; }
-  .container .box {
+    position: relative;
+    width: 370px;
+    height: 520px;
+    margin: 80px auto;
+    background-color: #faf8ef;
+    font-family: 'Microsoft Yahei', "Helvetica Neue", Arial, sans-serif;
+}
+
+.container .box {
     width: 90%;
     height: 94%;
     padding: 5%;
@@ -20,69 +23,96 @@
     /*分数和开始游戏*/
     /*开始游戏按钮*/
     /*分数*/
-    /*游戏部分*/ }
-    .container .box h2 {
-      color: #5B4735;
-      margin: 5% auto; }
-    .container .box header {
-      width: 100%; }
-    .container .box h1 {
-      float: left;
-      width: 75px;
-      height: 75px;
-      font-size: 24px;
-      line-height: 75px;
-      border-radius: 5px;
-      background-color: #ebc400; }
-    .container .box p, .container .box a {
-      float: right;
-      width: 93px;
-      height: 54px;
-      border-radius: 5px;
-      background-color: #8f7a66; }
-    .container .box a.new-game {
-      line-height: 54px;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      margin: 8px auto;
-      padding: 0 3px; }
-      .container .box a.new-game :hover {
-        background-color: #9f8b77; }
-    .container .box p.score {
-      display: block;
-      padding-top: 6px;
-      font-size: 6px;
-      color: #ebddd0;
-      margin: 6px 10px;
-      /*玩家分数*/ }
-      .container .box p.score .user-score {
-        display: block;
-        font-size: 24px;
-        letter-spacing: 2px;
-        color: white; }
-    .container .box .main {
-      padding: 0 1.5px; }
-    .container .box ul#grid-box {
-      position: relative;
-      width: 330px;
-      height: 330px;
-      border-radius: 5px;
-      background-color: #baaa99; }
-      .container .box ul#grid-box li.grid-cell {
-        position: absolute;
-        width: 70px;
-        height: 70px;
-        background-color: #ccc0b3;
-        border-radius: 5px; }
-      .container .box ul#grid-box .number-cell {
-        position: absolute;
-        line-height: 70px;
-        border-radius: 5px;
-        font-size: 34px;
-        font-weight: bold;
-        letter-spacing: 2px; }
-  .container .game-over-mes {
+    /*游戏部分*/
+}
+
+.container .box h2 {
+    color: #5B4735;
+    margin: 5% auto;
+}
+
+.container .box header {
+    width: 100%;
+}
+
+.container .box h1 {
+    float: left;
+    width: 75px;
+    height: 75px;
+    font-size: 24px;
+    line-height: 75px;
+    border-radius: 5px;
+    background-color: #ebc400;
+}
+
+.container .box p, .container .box a {
+    float: right;
+    width: 93px;
+    height: 54px;
+    border-radius: 5px;
+    background-color: #8f7a66;
+}
+
+.container .box a.new-game {
+    line-height: 54px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px auto;
+    padding: 0 3px;
+}
+
+.container .box a.new-game :hover {
+    background-color: #9f8b77;
+}
+
+.container .box p.score {
+    display: block;
+    padding-top: 6px;
+    font-size: 6px;
+    color: #ebddd0;
+    margin: 6px 10px;
+    /*玩家分数*/
+}
+
+.container .box p.score .user-score {
+    display: block;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.container .box .main {
+    padding: 0 1.5px;
+}
+
+.container .box ul#grid-box {
+    position: relative;
+    width: 330px;
+    height: 330px;
+    border-radius: 5px;
+    background-color: #baaa99;
+}
+
+.container .box ul#grid-box li.grid-cell {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: #ccc0b3;
+    border-radius: 5px;
+}
+
+.container .box ul#grid-box .number-cell {
+    position: absolute;
+    line-height: 70px;
+    border-radius: 5px;
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.container .game-over-mes {
+    display: none;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -98,19 +128,24 @@
     -moz-transition: 1s;
     -ms-transiton: 1s;
     -o-transition: 1s;
-    transition: 1s; }
-    .container .game-over-mes p {
-      margin-top: 60%;
-      color: #776e65;
-      font-size: 36px; }
-    .container .game-over-mes a.try-again {
-      display: block;
-      width: 90px;
-      height: 40px;
-      line-height: 40px;
-      background-color: #8f7a65;
-      color: #ffffff;
-      border-radius: 5px;
-      margin: 20px auto; }
+    transition: 1s;
+}
+
+.container .game-over-mes p {
+    margin-top: 60%;
+    color: #776e65;
+    font-size: 36px;
+}
+
+.container .game-over-mes a.try-again {
+    display: block;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #8f7a65;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 20px auto;
+}
 
 /*# sourceMappingURL=style.css.map */

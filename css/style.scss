@@ -41,7 +41,7 @@
       background-color: #ebc400;
     }
     /*分数和开始游戏*/
-    p, a {
+    p, a.new-game {
       float: right;
       width: 93px;
       height: 54px;
@@ -113,6 +113,7 @@
     }
   }
   .game-over-mes {
+    display: none;
     position: absolute;
     width: 100%;
     height: 100%;

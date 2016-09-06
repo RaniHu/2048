@@ -52,6 +52,7 @@ function forMoblie(){
 
 }
 function newGame() {
+    $(".user-score").text("0");
 
     //初始化期盼格子
     init();
@@ -66,7 +67,6 @@ function newGame() {
 
 //初始化期盼格子
 function init() {
-
     for (var i = 0; i < 4; i++) {                           //i为行高,j为列高 设置每个小格子位置
         for (var j = 0; j < 4; j++) {
             var gridCell = $("#grid-cell-" + i + "-" + j);
